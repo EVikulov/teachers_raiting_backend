@@ -47,3 +47,23 @@ $factory->define(App\Models\Groups::class, function (Faker\Generator $faker) {
         'name' => $faker->word,
     ];
 });
+
+$factory->define(App\Models\Disciplines::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+    ];
+});
+
+$factory->define(App\Models\Criterion::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'question_group' => $faker->word,
+        'number' => $faker->word,
+    ];
+});
+
+$factory->define(App\Models\Questionnaire::class, function (Faker\Generator $faker) {
+    return [
+        'rate' => $faker->randomNumber(),
+    ];
+});
