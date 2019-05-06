@@ -41,3 +41,9 @@ $factory->define(App\Models\Option::class, function (Faker\Generator $faker) {
         'value' => $faker->word
     ];
 });
+
+$factory->define(App\Models\Groups::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+    ];
+});

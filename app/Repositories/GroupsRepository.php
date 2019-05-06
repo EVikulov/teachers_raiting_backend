@@ -3,26 +3,23 @@
 namespace App\Repositories;
 
 use RonasIT\Support\Repositories\BaseRepository;
-use App\Models\Role;
+use App\Models\Groups;
 
 /**
- * @property  Role $model
-*/
-class RoleRepository extends BaseRepository
+ * @property Groups $model
+ */
+class GroupsRepository extends BaseRepository
 {
-    const ADMIN_ROLE = 1;
-    const STUDENT_ROLE = 2;
-    const TEACHER_ROLE = 3;
-
     public function __construct()
     {
-        $this->setModel(Role::class);
+        $this->setModel(Groups::class);
     }
 
     public function search($filters)
     {
         return $this->searchQuery($filters)
             ->filterByQuery(['name'])
+            ->with()
             ->getSearchResults();
     }
 }

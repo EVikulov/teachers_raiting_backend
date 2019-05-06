@@ -15,7 +15,8 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
-        'role_id'
+        'role_id',
+        'group_id'
     ];
 
     protected $hidden = [
@@ -37,5 +38,10 @@ class User extends Authenticatable implements JWTSubject
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Groups::class);
     }
 }

@@ -36,8 +36,12 @@ class AddRoles extends Migration
                 'name' => 'administrator'
             ],
             [
-                'id' => RoleRepository::USER_ROLE,
-                'name' => 'user'
+                'id' => RoleRepository::STUDENT_ROLE,
+                'name' => 'student'
+            ],
+            [
+                'id' => RoleRepository::TEACHER_ROLE,
+                'name' => 'teacher'
             ]
         ];
 

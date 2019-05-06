@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MediaController;
@@ -43,3 +44,9 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/auth/restore-password', ['uses' => AuthController::class . '@restorePassword']);
     Route::post('/auth/token/check', ['uses' => AuthController::class . '@checkRestoreToken']);
 });
+
+Route::post('/groups', ['uses' => GroupsController::class.'@create'])->middleware('jwt.auth');
+Route::put('/groups/{id}', ['uses' => GroupsController::class.'@update'])->middleware('jwt.auth');
+Route::delete('/groups/{id}', ['uses' => GroupsController::class.'@delete'])->middleware('jwt.auth');
+Route::get('/groups/{id}', ['uses' => GroupsController::class.'@get']);
+Route::get('/groups', ['uses' => GroupsController::class.'@search']);

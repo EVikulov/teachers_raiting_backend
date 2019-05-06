@@ -21,7 +21,7 @@ class UserService extends EntityService
 
     public function create($data)
     {
-        $data['role_id'] = array_get($data, 'role_id', RoleRepository::USER_ROLE);
+        $data['role_id'] = array_get($data, 'role_id', RoleRepository::STUDENT_ROLE);
         $data['password'] = Hash::make($data['password']);
 
         return $this->repository->create($data);
@@ -30,7 +30,7 @@ class UserService extends EntityService
     public function update($where, $data)
     {
         if (empty($data['role_id'])) {
-            $data['role_id'] = RoleRepository::USER_ROLE;
+            $data['role_id'] = RoleRepository::STUDENT_ROLE;
         }
 
         if (!empty($data['password'])) {
