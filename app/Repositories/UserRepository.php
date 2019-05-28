@@ -27,6 +27,7 @@ class UserRepository extends BaseRepository
         return $this->searchQuery($filters)
             ->filterBy('role_id')
             ->filterByQuery(['name', 'email'])
+            ->with()
             ->getSearchResults();
     }
 

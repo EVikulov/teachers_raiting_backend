@@ -48,6 +48,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/criteria', ['uses' => CriterionController::class.'@create']);
     Route::put('/criteria/{id}', ['uses' => CriterionController::class.'@update']);
     Route::delete('/criteria/{id}', ['uses' => CriterionController::class.'@delete']);
+
+    Route::post('/questionnaires', ['uses' => QuestionnaireController::class.'@create']);
+    Route::put('/questionnaires/{id}', ['uses' => QuestionnaireController::class.'@update']);
+    Route::delete('/questionnaires/{id}', ['uses' => QuestionnaireController::class.'@delete']);
 });
 
 Route::group(['middleware' => 'guest'], function () {
@@ -67,11 +71,7 @@ Route::group(['middleware' => 'guest'], function () {
 
     Route::get('/criteria/{id}', ['uses' => CriterionController::class.'@get']);
     Route::get('/criteria', ['uses' => CriterionController::class.'@search']);
+
+    Route::get('/questionnaires/{id}', ['uses' => QuestionnaireController::class.'@get']);
+    Route::get('/questionnaires', ['uses' => QuestionnaireController::class.'@search']);
 });
-
-
-Route::post('/questionnaires', ['uses' => QuestionnaireController::class.'@create'])->middleware('jwt.auth');
-Route::put('/questionnaires/{id}', ['uses' => QuestionnaireController::class.'@update'])->middleware('jwt.auth');
-Route::delete('/questionnaires/{id}', ['uses' => QuestionnaireController::class.'@delete'])->middleware('jwt.auth');
-Route::get('/questionnaires/{id}', ['uses' => QuestionnaireController::class.'@get']);
-Route::get('/questionnaires', ['uses' => QuestionnaireController::class.'@search']);
